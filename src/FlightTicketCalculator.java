@@ -3,19 +3,40 @@ import java.util.Scanner;
 public class FlightTicketCalculator {
     public static void main(String[] args) {
 
-        Scanner scanner=new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        double distance;
+        int age;
+        int travelType;
 
-        //Distance input
-        System.out.println("Mesafeyi km türünden giriniz: ");
-        double distance = scanner.nextDouble();
+        // Geçerli mesafe girişi alana kadar tekrar sor
+        while (true) {
+            System.out.print("Mesafeyi km türünden giriniz: ");
+            distance = scanner.nextDouble();
+            if (distance > 0) {
+                break;
+            }
+            System.out.println("Hatalı giriş! Mesafe 0'dan büyük olmalıdır.");
+        }
 
-        // Age input
-        System.out.println("Yaşınızı giriniz: ");
-        int age = scanner.nextInt();
+        // Geçerli yaş girişi alana kadar tekrar sor
+        while (true) {
+            System.out.print("Yaşınızı giriniz: ");
+            age = scanner.nextInt();
+            if (age > 0) {
+                break;
+            }
+            System.out.println("Hatalı giriş! Yaş 0'dan büyük olmalıdır.");
+        }
 
-        //Type of travel input
-        System.out.println("Yolculuk tipini giriniz (1 => Tek Yön , 2 => Gidiş Dönüş): ");
-        int travelType = scanner.nextInt();
+        // Geçerli yolculuk tipi alana kadar tekrar sor
+        while (true) {
+            System.out.print("Yolculuk tipini giriniz (1 => Tek Yön , 2 => Gidiş Dönüş): ");
+            travelType = scanner.nextInt();
+            if (travelType == 1 || travelType == 2) {
+                break;
+            }
+            System.out.println("Hatalı giriş! Yolculuk tipi sadece 1 veya 2 olabilir.");
+        }
 
 
         double unitPrice = 0.10;
@@ -24,11 +45,6 @@ public class FlightTicketCalculator {
 
         //Error Checking for invalid input
 
-        if (age<0 || distance<0 || (travelType!=1 && travelType!=2)){
-
-            System.out.println("Hatalı Veri Girdiniz! ");
-            //Checking discount for age
-        } else{
            if (age<12){
                discountRatio = 0.50;
            } else if (age >= 12 && age <= 24) {
@@ -44,9 +60,9 @@ public class FlightTicketCalculator {
                 discountPrice = 2*(discountPrice*0.80);
             }
             System.out.println("Toplam tutar = " + discountPrice + " TL");
+        scanner.close();
 
         }
 
-        scanner.close();
-    }
+
 }
