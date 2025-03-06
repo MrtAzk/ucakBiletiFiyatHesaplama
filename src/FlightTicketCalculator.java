@@ -7,8 +7,9 @@ public class FlightTicketCalculator {
         double distance;
         int age;
         int travelType;
-
-        // Geçerli mesafe girişi alana kadar tekrar sor
+        //Not : Açıklamalar inglizceye çevirilmiştir...
+        
+        // Keep asking until you get valid distance input
         while (true) {
             System.out.print("Mesafeyi km türünden giriniz: ");
             distance = scanner.nextDouble();
@@ -18,7 +19,7 @@ public class FlightTicketCalculator {
             System.out.println("Hatalı giriş! Mesafe 0'dan büyük olmalıdır.");
         }
 
-        // Geçerli yaş girişi alana kadar tekrar sor
+        // Ask again until you get a valid age entry
         while (true) {
             System.out.print("Yaşınızı giriniz: ");
             age = scanner.nextInt();
@@ -28,7 +29,7 @@ public class FlightTicketCalculator {
             System.out.println("Hatalı giriş! Yaş 0'dan büyük olmalıdır.");
         }
 
-        // Geçerli yolculuk tipi alana kadar tekrar sor
+        // Repeat the prompt until you get a valid trip type
         while (true) {
             System.out.print("Yolculuk tipini giriniz (1 => Tek Yön , 2 => Gidiş Dönüş): ");
             travelType = scanner.nextInt();
@@ -43,7 +44,6 @@ public class FlightTicketCalculator {
         double price = unitPrice*distance;
         double discountRatio= 0;
 
-        //Error Checking for invalid input
 
            if (age<12){
                discountRatio = 0.50;
